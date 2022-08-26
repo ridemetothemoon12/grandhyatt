@@ -163,7 +163,7 @@ a {
     position: fixed;
     width: 100%;
     height: 700px;
-    top: -700px;
+    top: -800px;
     margin-top: 90px;
     background-color: rgba(0, 0, 0, 0.6);
     text-align: center;
@@ -211,8 +211,6 @@ a {
 /* --------컨텐츠 1번-------- */
 .content_1 {
     margin-top: 150px;
-    width: 100%;
-    height: 1024px;
     align-items: center;
 }
 .content_1 > .content_wrap {   
@@ -236,9 +234,6 @@ a {
 }
 .content_1 > .content_wrap > .content_text {
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     top: 200px;
     left: 520px;
     padding-left: 20px;
@@ -258,27 +253,23 @@ a {
 .content_2 > .content_wrap {   
     position: relative;
     width: 1170px;
-    height: inherit;
     margin: 0 auto;
 }
-.content_2 > .content_wrap > ul {
+.content_2 > .content_wrap > .content_images {
     display: table;
     table-layout: fixed;
-    width: 100%;
-    height: 720px;
+    width: 1170px;
     overflow: hidden;
     margin: auto;
     padding-top: 185px;
-    text-align-last: left;
 }
-.content_2 > .content_wrap > .content_images > li {
+.content_2 > .content_wrap > .content_images > .table_item {
     display: table-cell;
     width: 20%;
-    height: 720px;
-    transition: all 2s ease;
+    transition:1s ease-in-out;
     position: relative;
 }
-.content_2 > .content_wrap > .content_images > li > p {
+.content_2 > .content_wrap > .content_images > .table_item > p {
     width: 500px;
     position: absolute;
     color: whitesmoke;
@@ -290,29 +281,14 @@ a {
     font-size: 16px;
     text-shadow: 1px 1px 7px #000;
 }
-.content_2 > .content_wrap > .content_images > .content_item_1 {
-    background: url("../image/contentpool.jpg") no-repeat;
-}
-.content_2 > .content_wrap > .content_images > .content_item_2 {
-    background: url("../image/contenthan.jpg") no-repeat; 
-}
-.content_2 > .content_wrap > .content_images > .content_item_3 {
-    background: url("../image/contentdeck.jpg") no-repeat; 
-}
-.content_2 > .content_wrap > .content_images > .content_item_4 {
-    background: url("../image/contentoutlook.jpg") no-repeat; 
-}
-.content_2 > .content_wrap > .content_images > .content_item_5 {
-    background: url("../image/contentfit.jpg") no-repeat; 
-}
-.content_2 > .content_wrap > .content_images > li:hover {
+.content_2 > .content_wrap > .content_images > .table_item:hover {
     width: 180%;
 }
-.content_2 > .content_wrap > .content_images > li:hover p{
+.content_2 > .content_wrap > .content_images > .table_item:hover p{
     color: transparent;
     text-shadow: 0 0 0 transparent;
 }
-.content_2 > .content_wrap > .content_images_text{
+.content_2 > .content_wrap > .content_images_text {
     display: flex;
     padding-top: 10px;
 }
@@ -339,8 +315,7 @@ a {
     display: flex;
 }
 .content_2 > .content_wrap > .content_text > .content_sub {
-    padding-top: 129px;
-    padding-left: 10px;
+    padding: 129px 0 0 10px;
 }
 /* --------컨텐츠 3번-------- */
 .content_3 {
@@ -464,10 +439,6 @@ a {
     /* overflow: hidden; */
     border-radius: 50%;
 }
-/* .slick.hover {
-    z-index: 1;
-    transition: .3s;
-} */
 .slick-dots {
     padding-top: 50px;
     position: absolute;
@@ -605,4 +576,109 @@ a {
 .footer > .footer_wrap > .footer_text > .footer_text_bottom > p:nth-last-child(1)::after {
     content: "";
     border-right: 0px solid #000;
+}
+
+@media screen and (min-width:641px) and (max-width:1024px) {
+    .header {
+        width: 1024px;
+        height: 800px;
+    }
+    .header > .header_wrap {
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(3px);
+    }
+    .header > .header_wrap > .header_logo {
+        left: 4%;
+        transform: translateX(0);
+        padding-top: 15px;
+    }
+    .header > .header_wrap > .header_logo > a > img {
+        width: 250px;
+        height: 60px;
+        content:url("../image/tablogo.png");
+    }
+    .header > .header_wrap > .header_menu {
+        justify-content: flex-end;
+        padding-right: 150px;
+    }
+    .header > .header_wrap > .header_menu > .header_text {
+        color: white;
+    }
+    .header > .header_wrap > .header_menu > .header_text > .language > a {
+        color: white;
+    }
+    .header > .header_wrap > .header_menu > .header_bar > .menu-btn > .line {
+        background-color: white;
+    }
+    .header > .header_wrap > .header_menu > .header_bar {
+        position: absolute;
+        left: 93%;
+    }
+    .header > .header_topdown {
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(3px);
+        padding-top: 0px;
+        height: 600px;
+        top: -725px;
+    }
+    .header > .header_topdown.on {
+        top: 0px;
+        z-index: 2;
+    }
+    /* --------------컨텐츠 1번------------- */
+    .content_1 > .content_wrap {
+        width: 1024px;
+        height: 800px;
+    }
+    .content_1 > .content_wrap > .content_images > .inside {
+        width: 410px;
+        height: 630px;
+    }
+    .content_1 > .content_wrap > .content_images > .outlook  {
+        width: 500px;
+        height: 260px;
+        padding: 0 0 0 20px;
+    }
+    .content_1 > .content_wrap > .content_text {
+        left: 460px;
+    }
+    /* --------------컨텐츠 2번------------- */
+    .content_2 > .content_wrap {
+        width: 1024px;
+        height: 800px;
+    }
+    .content_2 > .content_wrap > ul {
+        height: 620px;
+    }
+    .content_2 > .content_wrap > .content_images > li {
+        height: 620px;
+    }
+    .content_2 > .content_wrap > .content_text  {
+        top: 126px;
+    }
+    .content_2 .content_title {
+        font-size: 32px;
+        display: flex;
+        height: 46px;
+    }
+    .content_2 > .content_wrap > .content_text > .content_sub {
+        padding-top: 0;
+        padding-left: 25px;
+    }
+    .content_2 .under_line {
+        border: none;
+        position: relative;
+        padding-left: 10px;
+    }
+    .content_2 .under_line::after {
+        position: absolute;
+        content: "";
+        width: 3px;
+        height: 32px;
+        background-color: rgb(189, 33, 62);
+        top: 8px;
+    }
+    .content_2  img {
+        width: 1024px;
+    }
 }
