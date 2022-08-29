@@ -25,7 +25,6 @@ $('document').ready(function(){
     thisHover.hover(function() {
         let ele = $(this);
         let index = ele.index();
-
         let main1 = $('.content_images_text .title_1');
         let main1_EN = $('.content_images_text .title_1_EN');
         let main2 = $('.content_images_text .title_2');
@@ -39,12 +38,10 @@ $('document').ready(function(){
         main2_EN.text(mainarr2_EN[index]);
         sub1.text(subarr1[index]);
         sub1_EN.text(subarr1_EN[index]);
-        
-        console.log(index);
+        console.log(index)
     }, function() {
         $('.content_2 .content_images_text h3').text("");
         $('.content_2 .content_images_text p').text("");
-        
     });
 
     $('.language').click(function() {
@@ -79,58 +76,72 @@ $('document').ready(function(){
         },500);
     });
 
-    $(".slick").slick({
-        dots: true,
-        // vertical: true,
+    const slicks = $('.slick');
+
+    slicks.each(function(){
+        if($(this).is(".slick-one")) {
+            $(this).slick({
+                dots: true,
+                // vertical: true,
+                slidesToShow: 1,
+                infinite: true,
+                slidesToScroll: 1,
+                autoplay:true,
+                autoplaySpeed:3000,
+                // centerMode:true,
+            });
+        }
+    })
+    let slick_tabRespose = $('.slick-two');
+
+    let slickOptions = {
+        dots:false,
         slidesToShow: 1,
         infinite: true,
         slidesToScroll: 1,
-        autoplay:true,
-        autoplaySpeed:3000,
-        // centerMode:true,
-    });
+        autoplay:false
+    }
+    let titleArr = ["제주 핫팟", "녹나무", "그랜드 키친", "포차","99 밸리", "스테이크 하우스", "차이나 하우스", "유메야마"]
+    let titleArr_EN = ["Jeju Hot Pot", "Noknamu", "Grand Kitchen", "Pocha","99 Valley", "Steak House", "China House", "Yumeyama"]
+
+    let titleSubArr = ["제주의 건강한 식재료와 훠궈가 만나 특별한 다이닝 경험을 선사합니다. 생선이나 고기, 버섯을 베이스로 한 깊고 시원한 맛이 일품인 ‘바이탕’과 알싸한 마라맛의 매콤한 ‘홍탕’ 육수에 신선한 해산물, 얇게 썬 고기, 계절별 다양한 채소를 취향에 따라 넣고 전문 셰프의 레시피로 만들어진 다양한 특제 소스를 곁들여 보세요. 중국 정통 훠궈의 담백하고 이국적인 맛의 신세계를 경험하실 수 있습니다.",
+                        "알맞게 숙성된 제주 흑돼지와 엄선된 최상급 한우는 테이블 화로에서 직접 구워져 완벽한 맛을 선사합니다. 단아한 한국의 멋과 모던함이 어우러진 품격 있는 공간에서 입안 가득 터지는 풍부한 육즙을 느끼며 숯불구이와 잘 어울리는 한라산 소주, 제주 생막걸리를 곁들여보세요. 아침과 점심에는 비빔밥, 된장찌개, 성게미역국 등 정갈한 한정식 메뉴도 즐길 수 있습니다.",
+                        "월드클래스 셰프 군단이 선보이는 국내 최고, 최대 규모 프리미엄 뷔페를 만나보세요. 7개의 오픈 키친에서 라이브로 조리되는 풍미가 깊은 양고기, 육즙이 풍부한 스테이크와 씨푸드 그릴, 제주도 청정해에서 잡아 올린 제철 해산물과 신선한 생선회, 정갈한 제주 향토 음식, 고품격 중식, 전문 셰프의 손끝에서 매일 새롭게 준비되는 수제 아이스크림과 다양한 디저트까지 풍성하게 맛볼 수 있습니다. 고급스럽고 트랜디한 인테리어 공간에서 세계 각국의 다채로운 미식 요리를 마음껏 즐겨보세요.",
+                        "제주도 하늘과 가장 맞닿은 곳에서 푸른 바다와 오렌지색 노을 지는 석양을 바라보며 황홀경에 취해보세요. 밤늦게까지 올드 K팝에 흠뻑 빠져들며 갓 튀겨낸 바삭한 치킨과 시원한 맥주, 해물파전과 생막걸리, 다양한 꼬치구이와 소주 칵테일을 즐겨 보세요. 트렌디한 모던 인테리어와 아름다운 석양이 잊지 못할 제주의 밤을 선사합니다.",
+                        "99개의 석봉이 숨어 있는 아름다운 섬 제주에서 99개의 다양한 아시안 푸드를 즐겨보세요. 중국의 수타면, 태국의 볶음밥, 싱가포르의 락사 등 아시아를 대표하는 맛있는 음식을 캐주얼하게 즐길 수 있는 다양한 요리를 제공합니다.  * 99밸리는 외국인 전용 카지노 내에 위치한 다이닝 시설입니다.",
+                        "제주의 가장 높은 고도에서 웅장한 한라산과 탁 트인 제주 시내를 내려다보며 풍미 가득한 최고의 다이닝을 즐기세요. 해외 5성급 호텔 총괄 셰프를 역임한 스타 셰프 벌튼이 섬세한 조리와 노하우로 부드러운 육질의 최상급 한우, 제주 흑돼지와 신선한 해산물 그릴 메뉴를 선보입니다. 소믈리에가 추천하는 엄선된 와인 페어링과 함께 제주 파노라믹 뷰를 감상하며 천상의 맛을 경험해 보세요.",
+                        "빈센트 셰프가 선보이는 중국 4대 진미를 맛보세요. 진귀한 최상급 재료만을 사용하여 중국 정통 최고의 맛을 그대로 전해드립니다. 품격이 느껴지는 호사로운 공간에서 베이징덕, 딤섬 등 고품격 중식의 황홀한 미식을 경험해 보세요.",
+                        "5성급 호텔 출신의 스타 셰프 코지마가 이끄는 모던 일식 다이닝 바에서 딥하우스 음악과 함께 이자카야, 스시, 테판야끼를 즐겨 보세요. 일류 바텐더가 만드는 하이볼과 소주 칵테일, 사케를 곁들이면 밤늦게까지 분위기 있는 추억을 만들 수 있습니다. 청정 제주바다에서 갓 잡아올린 최고 신선도를 자랑하는 사시미와 스시, 최상급 식재료로 선보이는 이자카야 메뉴를 맛보며 모던 일식의 신세계를 경험하세요."]
+    let titleSubArr_EN = ["This authentic Chinese hot pot restaurant presents Jeju's freshest seafood, meat and seasonal ingredients. Choose your soup bases, from nourishing pork broths to Sichuan spicy soups, prepared by our soup master. Select from a wide variety of fresh seafood, meats and seasonal vegetables to complete your meal. Complement your meal with a wide range of sauces and condiments to complete your dining experience.",
+                        "The finest cuts of Jeju black pork and Korean Hanwoo beef are grilled to perfection at your table. Complete your Korean dining experience with local Jeju Hallasan soju and makgeoli. For breakfast and lunch, guests can also select from signature favourites like bibimbap, doenjang jjigae, sea urchin seaweed soup.",
+                        "Enjoy a fun and vibrant ‘Las-Vegas’ style buffet in Jeju. Born and raised in Korea, Chef Min was the Chef de Cuisine hailing from the top restaurant in Macau. He brings with him a wealth of culinary experience and knowledge. Featuring seven show kitchens, enjoy premium beef and lamb cuts to premier seafood grilled a-la-minute. Buffet includes a selection of fresh seafood like prawns and mussels; a sushi and sashimi corner, as well as refreshing salads and appetizers. Indulge in assorted desserts and a kid's buffet in a new and modern space.",
+                        "Witness amazing sunsets at Jeju’s highest point. Enjoy fried chicken with beer, Korean seafood pancakes with makgeolli and Korean skewers with soju while you immerse yourself in the best of oldies K-pop till late. This is the perfect place to experience modern Korean nightlife.",
+                        "99 Valley is the perfect dining choice for a fast, affordable and delicious meal – featuring the best of Asian comfort food from Greater China and Southeast Asia. (accessible by foreign passport holders only).",
+                        "Enjoy the best dining experience as you overlook stunning Jeju sea and Mount Halla. World-class Executive Chef Burton Yi serves up signature grilled dishes like Hanwoo beef, Jeju black pork tomahawk, and fresh seafood tower.",
+                        "Led by Master Chef Vincent, our team of world-class specialty chefs serves up dim sum, BBQ , Peking Duck and wok, showcasing the best of China’s cuisines specializing in Northern, Shanghainese, Sichuan and Cantonese dishes. Experience the taste of China with the best of Chinese delicacies. A must-try is the signature Peking duck, freshly roasted and then skillfully carved tableside.",
+                        "Led by Chef Kojima, enjoy Sushi, Izakaya and Teppanyaki – 3 dining concepts all under one roof. This allows you to order from any kitchen. Choose from freshest sashimi like yellowtail and uni, sushi, charcoal grilled skewers, tempura or lobster and beef teppan. Complement your meal with an extensive selection of premium Japanese sake and highball."]
     
-    $(this).on('afterChange', function(e,s,currentSlide) {
-        let titleArr = ["제주 핫팟", "녹나무", "그랜드 키친", "포차","99 밸리", "스테이크 하우스", "차이나 하우스", "유메야마"]
-        let titleArr_EN = ["Jeju Hot Pot", "Noknamu", "Grand Kitchen", "Pocha","99 Valley", "Steak House", "China House", "Yumeyama"]
+    let sub_1Arr = ["런치\n토요일 & 일요일ㅣ11:30AM - 3:00PM\n\n디너\n매일ㅣ5:00PM - 10:00PM",
+                    "조식\n매일ㅣ7:00AM - 11:00AM\n\n런치\n매일ㅣ11:30AM - 3:00PM\n\n디너\n매일ㅣ5:00PM - 10:00PM",
+                    "조식\n매일ㅣ6:30AM - 11:00AM\n\n런치\n매일ㅣ12:00PM - 2:30PM\n\n디너\n매일ㅣ5:00PM - 10:00PM",
+                    "조식\n매일ㅣ7:00AM - 1:00PM\n\n디너\n일요일 - 목요일ㅣ4:00PM - 12:30AM\n금요일 - 토요일ㅣ4:00PM - 1:30AM",
+                    "매일ㅣ24시간",
+                    "런치\n수요일 & 일요일ㅣ11:30AM - 3:00PM\n\n디너\n수요일 & 일요일ㅣ5:00PM - 10:00PM",
+                    "런치\n수요일 & 일요일ㅣ11:30AM - 3:00PM\n\n디너\n매일ㅣ5:00PM - 10:00PM",
+                    "디너\n목요일, 일요일 - 월요일ㅣ5:30PM - 12:30AM\n금요일 - 토요일 | 5:30PM - 1:30AM\n\n※ 오마카세 코스: 스시 혹은 테판야끼 (전화예약 필수)- 5:30PM (1부)  &  7:30PM (2부)"]       
+    let sub_1Arr_EN = ["Lunch\nSaturday & Sundayㅣ11:30AM - 3:00PM\n\nDinner\nMonday - Sundayㅣ5:00PM - 10:00PM",
+                    "Breakfast\nMonday - Sundayㅣ7:00AM - 11:00AM\n\nLunch\nMonday - Sundayㅣ11:30AM - 3:00PM\n\nDinner\nMonday - Sundayㅣ5:00PM - 10:00PM",
+                    "Breakfast\nMonday - Sundayㅣ6:30AM - 11:00AM\n\nLunch\nMonday - Sundayㅣ12:00PM - 2:30PM\n\nDinner\nMonday - Sundayㅣ5:00PM - 10:00PM",
+                    "Breakfast\nMonday - Sundayㅣ7:00AM - 1:00PM\n\nDinner\nSunday - Thursdayㅣ4:00PM - 12:30AM\nFriday - Saturdayㅣ4:00PM - 1:30AM",
+                    "Monday - Sundayㅣ24Hours",
+                    "Lunch\nWednesday & Sundayㅣ11:30AM - 3:00PM\n\nDinner\nWednesday & Sundayㅣ5:00PM - 10:00PM",
+                    "Lunch\nWednesday & Sundayㅣ11:30AM - 3:00PM\n\nDinner\nMonday - Sundayㅣ5:00PM - 10:00PM",
+                    "Dinner\nThursday, Sunday - Mondayㅣ5:30PM - 12:30AM\nFriday - Saturday | 5:30PM - 1:30AM\n\n※ Omakase Course: Choice of Sushi or Teppanyaki* Telephone Reservation Required 5:30PM (1st seating)  &  7:30PM (2nd seating)"]
+    
+    let sub_2Arr = ["3층","3층","4층","타워 2ㅣ38층","2층","타워 2ㅣ38층","3층","4층"]
+    let sub_2Arr_EN = ["3F","3F","4F","Tower 2ㅣ38F","2F","Tower 2ㅣ38F","3F","4F"]
 
-        let titleSubArr = ["제주의 건강한 식재료와 훠궈가 만나 특별한 다이닝 경험을 선사합니다. 생선이나 고기, 버섯을 베이스로 한 깊고 시원한 맛이 일품인 ‘바이탕’과 알싸한 마라맛의 매콤한 ‘홍탕’ 육수에 신선한 해산물, 얇게 썬 고기, 계절별 다양한 채소를 취향에 따라 넣고 전문 셰프의 레시피로 만들어진 다양한 특제 소스를 곁들여 보세요. 중국 정통 훠궈의 담백하고 이국적인 맛의 신세계를 경험하실 수 있습니다.",
-                            "알맞게 숙성된 제주 흑돼지와 엄선된 최상급 한우는 테이블 화로에서 직접 구워져 완벽한 맛을 선사합니다. 단아한 한국의 멋과 모던함이 어우러진 품격 있는 공간에서 입안 가득 터지는 풍부한 육즙을 느끼며 숯불구이와 잘 어울리는 한라산 소주, 제주 생막걸리를 곁들여보세요. 아침과 점심에는 비빔밥, 된장찌개, 성게미역국 등 정갈한 한정식 메뉴도 즐길 수 있습니다.",
-                            "월드클래스 셰프 군단이 선보이는 국내 최고, 최대 규모 프리미엄 뷔페를 만나보세요. 7개의 오픈 키친에서 라이브로 조리되는 풍미가 깊은 양고기, 육즙이 풍부한 스테이크와 씨푸드 그릴, 제주도 청정해에서 잡아 올린 제철 해산물과 신선한 생선회, 정갈한 제주 향토 음식, 고품격 중식, 전문 셰프의 손끝에서 매일 새롭게 준비되는 수제 아이스크림과 다양한 디저트까지 풍성하게 맛볼 수 있습니다. 고급스럽고 트랜디한 인테리어 공간에서 세계 각국의 다채로운 미식 요리를 마음껏 즐겨보세요.",
-                            "제주도 하늘과 가장 맞닿은 곳에서 푸른 바다와 오렌지색 노을 지는 석양을 바라보며 황홀경에 취해보세요. 밤늦게까지 올드 K팝에 흠뻑 빠져들며 갓 튀겨낸 바삭한 치킨과 시원한 맥주, 해물파전과 생막걸리, 다양한 꼬치구이와 소주 칵테일을 즐겨 보세요. 트렌디한 모던 인테리어와 아름다운 석양이 잊지 못할 제주의 밤을 선사합니다.",
-                            "99개의 석봉이 숨어 있는 아름다운 섬 제주에서 99개의 다양한 아시안 푸드를 즐겨보세요. 중국의 수타면, 태국의 볶음밥, 싱가포르의 락사 등 아시아를 대표하는 맛있는 음식을 캐주얼하게 즐길 수 있는 다양한 요리를 제공합니다.  * 99밸리는 외국인 전용 카지노 내에 위치한 다이닝 시설입니다.",
-                            "제주의 가장 높은 고도에서 웅장한 한라산과 탁 트인 제주 시내를 내려다보며 풍미 가득한 최고의 다이닝을 즐기세요. 해외 5성급 호텔 총괄 셰프를 역임한 스타 셰프 벌튼이 섬세한 조리와 노하우로 부드러운 육질의 최상급 한우, 제주 흑돼지와 신선한 해산물 그릴 메뉴를 선보입니다. 소믈리에가 추천하는 엄선된 와인 페어링과 함께 제주 파노라믹 뷰를 감상하며 천상의 맛을 경험해 보세요.",
-                            "빈센트 셰프가 선보이는 중국 4대 진미를 맛보세요. 진귀한 최상급 재료만을 사용하여 중국 정통 최고의 맛을 그대로 전해드립니다. 품격이 느껴지는 호사로운 공간에서 베이징덕, 딤섬 등 고품격 중식의 황홀한 미식을 경험해 보세요.",
-                            "5성급 호텔 출신의 스타 셰프 코지마가 이끄는 모던 일식 다이닝 바에서 딥하우스 음악과 함께 이자카야, 스시, 테판야끼를 즐겨 보세요. 일류 바텐더가 만드는 하이볼과 소주 칵테일, 사케를 곁들이면 밤늦게까지 분위기 있는 추억을 만들 수 있습니다. 청정 제주바다에서 갓 잡아올린 최고 신선도를 자랑하는 사시미와 스시, 최상급 식재료로 선보이는 이자카야 메뉴를 맛보며 모던 일식의 신세계를 경험하세요."]
-        let titleSubArr_EN = ["This authentic Chinese hot pot restaurant presents Jeju's freshest seafood, meat and seasonal ingredients. Choose your soup bases, from nourishing pork broths to Sichuan spicy soups, prepared by our soup master. Select from a wide variety of fresh seafood, meats and seasonal vegetables to complete your meal. Complement your meal with a wide range of sauces and condiments to complete your dining experience.",
-                            "The finest cuts of Jeju black pork and Korean Hanwoo beef are grilled to perfection at your table. Complete your Korean dining experience with local Jeju Hallasan soju and makgeoli. For breakfast and lunch, guests can also select from signature favourites like bibimbap, doenjang jjigae, sea urchin seaweed soup.",
-                            "Enjoy a fun and vibrant ‘Las-Vegas’ style buffet in Jeju. Born and raised in Korea, Chef Min was the Chef de Cuisine hailing from the top restaurant in Macau. He brings with him a wealth of culinary experience and knowledge. Featuring seven show kitchens, enjoy premium beef and lamb cuts to premier seafood grilled a-la-minute. Buffet includes a selection of fresh seafood like prawns and mussels; a sushi and sashimi corner, as well as refreshing salads and appetizers. Indulge in assorted desserts and a kid's buffet in a new and modern space.",
-                            "Witness amazing sunsets at Jeju’s highest point. Enjoy fried chicken with beer, Korean seafood pancakes with makgeolli and Korean skewers with soju while you immerse yourself in the best of oldies K-pop till late. This is the perfect place to experience modern Korean nightlife.",
-                            "99 Valley is the perfect dining choice for a fast, affordable and delicious meal – featuring the best of Asian comfort food from Greater China and Southeast Asia. (accessible by foreign passport holders only).",
-                            "Enjoy the best dining experience as you overlook stunning Jeju sea and Mount Halla. World-class Executive Chef Burton Yi serves up signature grilled dishes like Hanwoo beef, Jeju black pork tomahawk, and fresh seafood tower.",
-                            "Led by Master Chef Vincent, our team of world-class specialty chefs serves up dim sum, BBQ , Peking Duck and wok, showcasing the best of China’s cuisines specializing in Northern, Shanghainese, Sichuan and Cantonese dishes. Experience the taste of China with the best of Chinese delicacies. A must-try is the signature Peking duck, freshly roasted and then skillfully carved tableside.",
-                            "Led by Chef Kojima, enjoy Sushi, Izakaya and Teppanyaki – 3 dining concepts all under one roof. This allows you to order from any kitchen. Choose from freshest sashimi like yellowtail and uni, sushi, charcoal grilled skewers, tempura or lobster and beef teppan. Complement your meal with an extensive selection of premium Japanese sake and highball."]
-        
-        let sub_1Arr = ["런치\n토요일 & 일요일ㅣ11:30AM - 3:00PM\n\n디너\n매일ㅣ5:00PM - 10:00PM",
-                        "조식\n매일ㅣ7:00AM - 11:00AM\n\n런치\n매일ㅣ11:30AM - 3:00PM\n\n디너\n매일ㅣ5:00PM - 10:00PM",
-                        "조식\n매일ㅣ6:30AM - 11:00AM\n\n런치\n매일ㅣ12:00PM - 2:30PM\n\n디너\n매일ㅣ5:00PM - 10:00PM",
-                        "조식\n매일ㅣ7:00AM - 1:00PM\n\n디너\n일요일 - 목요일ㅣ4:00PM - 12:30AM\n금요일 - 토요일ㅣ4:00PM - 1:30AM",
-                        "매일ㅣ24시간",
-                        "런치\n수요일 & 일요일ㅣ11:30AM - 3:00PM\n\n디너\n수요일 & 일요일ㅣ5:00PM - 10:00PM",
-                        "런치\n수요일 & 일요일ㅣ11:30AM - 3:00PM\n\n디너\n매일ㅣ5:00PM - 10:00PM",
-                        "디너\n목요일, 일요일 - 월요일ㅣ5:30PM - 12:30AM\n금요일 - 토요일 | 5:30PM - 1:30AM\n\n※ 오마카세 코스: 스시 혹은 테판야끼 (전화예약 필수)- 5:30PM (1부)  &  7:30PM (2부)"]       
-        let sub_1Arr_EN = ["Lunch\nSaturday & Sundayㅣ11:30AM - 3:00PM\n\nDinner\nMonday - Sundayㅣ5:00PM - 10:00PM",
-                        "Breakfast\nMonday - Sundayㅣ7:00AM - 11:00AM\n\nLunch\nMonday - Sundayㅣ11:30AM - 3:00PM\n\nDinner\nMonday - Sundayㅣ5:00PM - 10:00PM",
-                        "Breakfast\nMonday - Sundayㅣ6:30AM - 11:00AM\n\nLunch\nMonday - Sundayㅣ12:00PM - 2:30PM\n\nDinner\nMonday - Sundayㅣ5:00PM - 10:00PM",
-                        "Breakfast\nMonday - Sundayㅣ7:00AM - 1:00PM\n\nDinner\nSunday - Thursdayㅣ4:00PM - 12:30AM\nFriday - Saturdayㅣ4:00PM - 1:30AM",
-                        "Monday - Sundayㅣ24Hours",
-                        "Lunch\nWednesday & Sundayㅣ11:30AM - 3:00PM\n\nDinner\nWednesday & Sundayㅣ5:00PM - 10:00PM",
-                        "Lunch\nWednesday & Sundayㅣ11:30AM - 3:00PM\n\nDinner\nMonday - Sundayㅣ5:00PM - 10:00PM",
-                        "Dinner\nThursday, Sunday - Mondayㅣ5:30PM - 12:30AM\nFriday - Saturday | 5:30PM - 1:30AM\n\n※ Omakase Course: Choice of Sushi or Teppanyaki* Telephone Reservation Required 5:30PM (1st seating)  &  7:30PM (2nd seating)"]
-        
-        let sub_2Arr = ["3층","3층","4층","타워 2ㅣ38층","2층","타워 2ㅣ38층","3층","4층"]
-        let sub_2Arr_EN = ["3F","3F","4F","Tower 2ㅣ38F","2F","Tower 2ㅣ38F","3F","4F"]
-
+    $(".slick-one").on('afterChange', function(e,s,currentSlide) {
         $('.content_img_text .title').text(titleArr[currentSlide])
         $('.content_img_text .title_EN').text(titleArr_EN[currentSlide])
         $('.content_img_text .title_sub').text(titleSubArr[currentSlide])
@@ -139,7 +150,6 @@ $('document').ready(function(){
         $('.content_img_text .sub_1_EN').text(sub_1Arr_EN[currentSlide])
         $('.content_img_text .sub_2').text("위치 : "+sub_2Arr[currentSlide])
         $('.content_img_text .sub_2_EN').text("Location : "+sub_2Arr_EN[currentSlide])
-        console.log(currentSlide)
     });
 
     $('.slick img').click(function() {
@@ -151,4 +161,31 @@ $('document').ready(function(){
     $('.slick img').mouseout(function(){
         $('.slick').slick('slickPlay', true);
     })
+
+
+    $(window).resize(function(){
+        if($(this).width() < 1024) {
+            slick_tabRespose.not('.slick-initialized').slick(slickOptions);
+            thisHover.unbind('mouseenter mouseleave');
+            $(".slick-two").on('afterChange', function(e,s,currentSlide) { 
+                let main1 = $('.content_images_text .title_1');
+                let main1_EN = $('.content_images_text .title_1_EN');
+                let main2 = $('.content_images_text .title_2');
+                let main2_EN = $('.content_images_text .title_2_EN');
+                let sub1 = $('.content_images_text .sub_1');
+                let sub1_EN = $('.content_images_text .sub_1_EN ');
+        
+                main1.text(mainarr[currentSlide]);
+                main1_EN.text(mainarr_EN[currentSlide]);
+                main2.text(mainarr2[currentSlide]);
+                main2_EN.text(mainarr2_EN[currentSlide]);
+                sub1.text(subarr1[currentSlide]);
+                sub1_EN.text(subarr1_EN[currentSlide]);
+            });
+        }
+        else
+            slick_tabRespose.slick("unslick");
+            thisHover.bind('mouseenter mouseleave');
+    });
+
 });
